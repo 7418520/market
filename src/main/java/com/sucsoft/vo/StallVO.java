@@ -56,4 +56,14 @@ public class StallVO {
         this.signing = signing;
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return "StallVO{" +
+                "marketId=" + marketId +
+                ", status='" + status + '\'' +
+                ", signing=" + signing +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

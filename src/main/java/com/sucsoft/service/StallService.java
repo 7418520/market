@@ -31,4 +31,16 @@ public class StallService extends ServiceImpl<StallDao, Stall> {
     public List<BoothRentalDTO> queryResult(StallVO stallVO ){
         return stallDao.queryResult(stallVO);
     }
+
+    public void delStall(Integer marketId, Integer stallId) throws Exception {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("id",stallId);
+        queryWrapper.eq("market_id",marketId);
+        Stall stall = stallDao.selectOne(queryWrapper);
+        if(stall==null) {
+            throw new Exception("不存在该摊位");
+        }else{
+            stallDao.deleteById(stall.getId());
+        }
+    }
 }
